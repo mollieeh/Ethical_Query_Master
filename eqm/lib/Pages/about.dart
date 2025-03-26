@@ -43,7 +43,7 @@ class About extends StatelessWidget
             profileCard(
               imagePath: 'assets/images/salvador.png',
               bio:
-                  'Hi! I’m Ryan, the lead designer. I focused on the app’s interface and visuals.',
+                  'Hi! I’m Salvador, the lead designer. I focused on the app’s interface and visuals.',
               role: 'Lead Designer',
             ),
 
@@ -127,7 +127,7 @@ Widget profileCard
                 width: 5,
               )
             ),
-            child: Image.asset(imagePath, height: 1000, fit: BoxFit.cover,),
+            child: Image.asset(imagePath, height: 300, fit: BoxFit.cover,),
           ),
           Padding
           (
