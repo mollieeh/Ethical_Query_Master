@@ -11,7 +11,15 @@ class History extends StatelessWidget
     return Scaffold
     (
       appBar: appBar(context),
-      body: Column
+      
+      body: loginStuff(),
+    );
+  }
+
+  Center loginStuff() {
+    return Center
+    (
+      child: Column
       (
         children:
         [
@@ -38,7 +46,8 @@ class History extends StatelessWidget
             ),
           )
         ]
-      ),
+      )
+      
     );
   }
 }

@@ -115,6 +115,7 @@ Widget profileCard
       ),
       child: Column
       (
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: 
         [
           Container
