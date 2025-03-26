@@ -296,7 +296,7 @@ class HomePage extends StatelessWidget
   }
 }
 
-AppBar appBar(BuildContext context)
+AppBar appBar(BuildContext context, {bool showIcon = true})
 {
   return AppBar
   (
@@ -336,7 +336,7 @@ AppBar appBar(BuildContext context)
         width: 4.0
       )
     ),
-    leading: IconButton
+    leading: showIcon ? IconButton
     (
       icon: const Icon(Icons.home),
       tooltip: 'Home Menu',
@@ -351,6 +351,7 @@ AppBar appBar(BuildContext context)
           )
         );
       },
-    ),
+    )
+    : null,
   );
 }

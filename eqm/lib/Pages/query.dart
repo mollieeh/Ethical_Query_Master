@@ -15,7 +15,8 @@ class Query extends StatelessWidget
       (
         children:
         [
-          Center(
+          Center
+          (
             child: ClipPath
             (
               clipper: DownTrapezoidClipper(),
@@ -36,6 +37,131 @@ class Query extends StatelessWidget
                 )
               )
             ),
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10),
+          ),
+          Center
+          (
+            child: TextField
+            (
+              textAlignVertical: TextAlignVertical(y: -1),
+              autocorrect: true,
+              maxLength: 500,
+              decoration: InputDecoration
+              (
+                labelText: 'Ethical Question',
+                constraints: BoxConstraints
+                (
+                  maxWidth: 450,
+                  maxHeight: 300,
+                ),
+                border: OutlineInputBorder(),
+              ),
+              maxLines: null,
+              minLines: null,
+              expands: true,
+            )
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10),
+          ),
+          Row
+          (
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: 
+            [
+              Container
+              (
+                width: 100,
+                decoration: BoxDecoration
+                (
+                  color: Colors.green
+                ),
+                child: TextButton
+                (
+                  style: TextButton.styleFrom
+                  (
+                    shape: RoundedRectangleBorder
+                    (
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text
+                  (
+                    'For',
+                    style: TextStyle
+                    (
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+              ),
+              Container
+              (
+                width: 100,
+                decoration: BoxDecoration
+                (
+                  color: Colors.green
+                ),
+                child: TextButton
+                (
+                  style: TextButton.styleFrom
+                  (
+                    shape: RoundedRectangleBorder
+                    (
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text
+                  (
+                    'Neutral',
+                    style: TextStyle
+                    (
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+              ),
+              Container
+              (
+                width: 100,
+                decoration: BoxDecoration
+                (
+                  color: Colors.green
+                ),
+                child: TextButton
+                (
+                  style: TextButton.styleFrom
+                  (
+                    shape: RoundedRectangleBorder
+                    (
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text
+                  (
+                    'Against',
+                    style: TextStyle
+                    (
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+              ),
+            ],
           )
         ]
       ),

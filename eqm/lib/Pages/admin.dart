@@ -15,7 +15,8 @@ class Admin extends StatelessWidget
       (
         children:
         [
-          Center(
+          Center
+          (
             child: ClipPath
             (
               clipper: DownTrapezoidClipper(),
@@ -36,7 +37,56 @@ class Admin extends StatelessWidget
                 )
               )
             ),
-          )
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10)
+          ),
+          Center
+          (
+            child: SizedBox
+            (
+              height: 100,
+              width: 500,
+              child: Image.asset('assets/images/account.png', height: 100,),
+            ),
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10)
+          ),
+          Center
+          (
+            child: Column
+            (
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: 
+              [
+                Container
+                (
+                  width: 450,
+                  height: 400,
+                  color: Colors.grey,
+                  padding: EdgeInsets.all(10),
+                  child: TextField
+                  (
+                    decoration: InputDecoration
+                    (
+                      filled: true,
+                      fillColor: Colors.white,
+                      labelText: 'Find User', 
+                      constraints: BoxConstraints
+                      (
+                        maxWidth: 200,
+                        maxHeight: 100,
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                )
+              ],
+            )
+          ),
         ]
       ),
     );
