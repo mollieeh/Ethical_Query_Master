@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-class Profile extends StatelessWidget 
+class Profile extends StatefulWidget 
 {
   const Profile({super.key});
 
   @override
-  Widget build(BuildContext context) 
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> 
+{
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context)
   {
     return Scaffold
     (
+      
       appBar: appBar(context),
       body: Column
       (
@@ -36,7 +45,52 @@ class Profile extends StatelessWidget
                 )
               )
             ),
-          )
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10)
+          ),
+          Center
+          (
+            child: SizedBox
+            (
+              height: 100,
+              width: 500,
+              child: Image.asset('assets/images/account.png', height: 100,),
+            ),
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10)
+          ),
+          Column
+          (
+            children: 
+            [
+              CheckboxListTile
+              (
+                title: const Text('Dark Mode'),
+                value: isChecked, 
+                onChanged: (bool? value)
+                {
+                  setState(() 
+                  {
+                    isChecked = value!;
+                  });
+                },
+              ),
+              Container
+              (
+                height: 20,
+                width: 100,
+                color: Colors.grey,
+                child: Text
+                (
+                  'Username',
+                ),
+              )
+            ],
+          ),
         ]
       ),
     );
