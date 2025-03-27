@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/login.dart';
 import 'home.dart';
-import 'forgot.dart';
-import 'newUser.dart';
 
-class Login extends StatelessWidget 
+class Forgot extends StatelessWidget 
 {
-  const Login({super.key});
+  const Forgot({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -36,71 +35,21 @@ class Login extends StatelessWidget
           (
             decoration: InputDecoration
             (
-              labelText: 'Username', 
+              labelText: 'Email', 
               constraints: BoxConstraints
               (
                 maxWidth: 300,
                 maxHeight: 100,
               ),
-              helper: TextButton
+              helper: Text
               (
-                onPressed: () 
-                {
-                  Navigator.push
-                  (
-                    context, 
-                    MaterialPageRoute
-                    (
-                      builder: (context) => Forgot()
-                    )
-                  );
-                },  
-                child: const Text
+                'Send email to recover account.',
+                style: TextStyle
                 (
-                  'Forgot Username?',
-                  style: TextStyle
-                  (
-                    color: Colors.blue,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold
-                  ),
-                )
-              ),
-            ),
-          ),
-          TextField
-          (
-            decoration: InputDecoration
-            (
-              labelText: 'Password', 
-              constraints: BoxConstraints
-              (
-                maxWidth: 300,
-                maxHeight: 100,
-              ),
-              helper: TextButton
-              (
-                onPressed: () 
-                {
-                  Navigator.push
-                  (
-                    context, 
-                    MaterialPageRoute
-                    (
-                      builder: (context) => Forgot()
-                    )
-                  );
-                }, 
-                child: const Text
-                (
-                  'Forgot Password?',
-                  style: TextStyle
-                  (
-                    color: Colors.blue,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold
-                  ),
-                )
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
@@ -112,6 +61,7 @@ class Login extends StatelessWidget
             [
               Container
               (
+                height: 30,
                 decoration: BoxDecoration
                 (
                   color: Colors.green
@@ -125,20 +75,10 @@ class Login extends StatelessWidget
                       borderRadius: BorderRadius.zero,
                     ),
                   ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => HomePage()
-                      )
-                    );
-                  },
+                  onPressed: () {},
                   child: const Text
                   (
-                    'Log In',
+                    'Send Email',
                     style: TextStyle
                     (
                       color: Colors.black,
@@ -170,19 +110,20 @@ class Login extends StatelessWidget
                       context, 
                       MaterialPageRoute
                       (
-                        builder: (context) => NewUser()
+                        builder: (context) => Login()
                       )
                     );
                   },
                   child: const Text
                   (
-                    'New User',
+                    'Back',
                     style: TextStyle
                     (
+                      
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.bold
-                    ),
+                    )
                   ),
                 ),
               ),

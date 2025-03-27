@@ -17,7 +17,8 @@ class About extends StatelessWidget
         (
           children:
           [
-            Center(
+            Center
+            (
               child: ClipPath
               (
                 clipper: DownTrapezoidClipper(),
@@ -40,7 +41,8 @@ class About extends StatelessWidget
               ),
             ),
             // 👤 Profile 1
-            profileCard(
+            profileCard
+            (
               imagePath: 'assets/images/salvador.png',
               bio:
                   'Hi! I’m Salvador, the lead designer. I focused on the app’s interface and visuals.',
@@ -48,7 +50,8 @@ class About extends StatelessWidget
             ),
 
             // 👤 Profile 2
-            profileCard(
+            profileCard
+            (
               imagePath: 'assets/images/ryan.png',
               bio:
                   'Hi! I’m Ryan, the backend developer. I worked on data logic and integrations.',
@@ -56,7 +59,8 @@ class About extends StatelessWidget
             ),
 
             // 👤 Profile 3
-            profileCard(
+            profileCard
+            (
               imagePath: 'assets/images/mollie.png',
               bio:
                   'Hey! I’m Mollie, I handled the project’s management.',
@@ -70,9 +74,11 @@ class About extends StatelessWidget
   }
 }
 
-class DownTrapezoidClipper extends CustomClipper<Path> {
+class DownTrapezoidClipper extends CustomClipper<Path> 
+{
   @override
-  Path getClip(Size size) {
+  Path getClip(Size size) 
+  {
     Border.all
     (
       color: Colors.black,
@@ -128,7 +134,12 @@ Widget profileCard
                 width: 5,
               )
             ),
-            child: Image.asset(imagePath, height: 300, fit: BoxFit.cover,),
+            child: Image.asset
+            (
+              imagePath, 
+              height: 300, 
+              fit: BoxFit.cover,
+            ),
           ),
           Padding
           (
