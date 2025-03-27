@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'login.dart';
 
 class Profile extends StatefulWidget 
 {
@@ -24,7 +25,8 @@ class _ProfileState extends State<Profile>
       (
         children:
         [
-          Center(
+          Center
+          (
             child: ClipPath
             (
               clipper: DownTrapezoidClipper(),
@@ -63,33 +65,331 @@ class _ProfileState extends State<Profile>
           (
             padding: EdgeInsets.all(10)
           ),
-          Column
+          Center
           (
-            children: 
-            [
-              CheckboxListTile
-              (
-                title: const Text('Dark Mode'),
-                value: isChecked, 
-                onChanged: (bool? value)
-                {
-                  setState(() 
-                  {
-                    isChecked = value!;
-                  });
-                },
-              ),
-              Container
-              (
-                height: 20,
-                width: 100,
-                color: Colors.grey,
-                child: Text
+            child: Column
+            (
+              children: <Widget>
+              [
+                CheckboxListTile
                 (
-                  'Username',
+                  title: const Text('Dark Mode'),
+                  value: isChecked, 
+                  onChanged: (bool? value)
+                  {
+                    setState(() 
+                    {
+                      isChecked = value!;
+                    });
+                  },
                 ),
-              )
-            ],
+                Column
+                (
+                  children: 
+                  [
+                    Container
+                    (
+                      height: 20,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Text
+                        (
+                          'Username: ',
+                          style: TextStyle
+                          (
+                            fontSize: 15
+                          ),
+                        ),
+                    ),
+                    Container
+                    (
+                      height: 40,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Container
+                      (
+                        height: 20,
+                        width: 400,
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration
+                        (
+                          borderRadius: BorderRadius.only
+                          (                          
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                            bottomLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25)
+                          ),
+                          color: Colors.white
+                        ),
+                        
+                      ),
+                    ),
+                  ],
+                ),
+                Column
+                (
+                  children: 
+                  [
+                    Container
+                    (
+                      height: 20,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Text
+                        (
+                          'Password: ',
+                          style: TextStyle
+                          (
+                            fontSize: 15
+                          ),
+                        ),
+                    ),
+                    Container
+                    (
+                      height: 40,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Container
+                      (
+                        height: 20,
+                        width: 400,
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration
+                        (
+                          borderRadius: BorderRadius.only
+                          (                          
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                            bottomLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25)
+                          ),
+                          color: Colors.white
+                        ),
+                        
+                      ),
+                    ),
+                  ],
+                ),
+                Column
+                (
+                  children: 
+                  [
+                    Container
+                    (
+                      height: 20,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Text
+                        (
+                          'Email: ',
+                          style: TextStyle
+                          (
+                            fontSize: 15
+                          ),
+                        ),
+                    ),
+                    Container
+                    (
+                      height: 40,
+                      width: 450,
+                      color: Colors.grey,
+                      child: Container
+                      (
+                        height: 20,
+                        width: 400,
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration
+                        (
+                          borderRadius: BorderRadius.only
+                          (                          
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                            bottomLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25)
+                          ),
+                          color: Colors.white
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Row
+                    (
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children:
+                      [
+                        Container
+                        (
+                          margin: const EdgeInsets.only(left: 30, bottom: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          decoration: BoxDecoration
+                          (
+                            color: Colors.green.shade200,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextButton
+                          (
+                            style: TextButton.styleFrom
+                            (
+                              shape: RoundedRectangleBorder
+                              (
+                                borderRadius: BorderRadius.zero,
+                              ),
+                            ),
+                            onPressed: () 
+                            {
+                              showDialog
+                              (
+                                context: context, 
+                                builder: (context) => AlertDialog
+                                (
+                                  title: Text
+                                  (
+                                    'Log Out'
+                                  ),
+                                  actions: 
+                                  [
+                                    Row
+                                    (
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: 
+                                      [
+                                        TextButton
+                                        (
+                                          onPressed: ()
+                                          {
+                                            Navigator.of(context).pop();
+                                          }, 
+                                          child: Text
+                                          (
+                                            'Close'
+                                          )
+                                        ),
+                                        TextButton
+                                        (
+                                          onPressed: ()
+                                          {
+                                            Navigator.push
+                                            (
+                                              context, 
+                                              MaterialPageRoute
+                                              (
+                                                builder: (context) => Login()
+                                              )
+                                            );
+                                          }, 
+                                          child: Text
+                                          (
+                                            'Log out'
+                                          )
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                  contentPadding: EdgeInsets.all(20),
+                                  content: Text
+                                  (
+                                    'Are you sure you want to log out of this account?'
+                                  ),
+                                )
+                              );
+                            },
+                            child: Text
+                            (
+                              'Log out',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Container
+                        (
+                          margin: const EdgeInsets.only(right: 20, bottom: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          decoration: BoxDecoration
+                          (
+                            color: Colors.green.shade200,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextButton
+                          (
+                            style: TextButton.styleFrom
+                            (
+                              shape: RoundedRectangleBorder
+                              (
+                                borderRadius: BorderRadius.zero,
+                              ),
+                            ),
+                            onPressed: () 
+                            {
+                              showDialog
+                              (
+                                context: context, 
+                                builder: (context) => AlertDialog
+                                (
+                                  title: Text
+                                  (
+                                    'Delete Account'
+                                  ),
+                                  actions: 
+                                  [
+                                    Row
+                                    (
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: 
+                                      [
+                                        TextButton
+                                        (
+                                          onPressed: ()
+                                          {
+                                            Navigator.of(context).pop();
+                                          }, 
+                                          child: Text
+                                          (
+                                            'Close'
+                                          )
+                                        ),
+                                        TextButton
+                                        (
+                                          onPressed: ()
+                                          {
+                                            Navigator.push
+                                            (
+                                              context, 
+                                              MaterialPageRoute
+                                              (
+                                                builder: (context) => Login()
+                                              )
+                                            );
+                                          }, 
+                                          child: Text
+                                          (
+                                            'Delete'
+                                          )
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                  contentPadding: EdgeInsets.all(20),
+                                  content: Text
+                                  (
+                                    'Are you sure you want to delete this account?'
+                                  ),
+                                )
+                              );
+                            },
+                            child: Text
+                            (
+                              'Delete Account',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ]
       ),
@@ -97,9 +397,11 @@ class _ProfileState extends State<Profile>
   }
 }
 
-class DownTrapezoidClipper extends CustomClipper<Path> {
+class DownTrapezoidClipper extends CustomClipper<Path> 
+{
   @override
-  Path getClip(Size size) {
+  Path getClip(Size size) 
+  {
     Border.all
     (
       color: Colors.black,
