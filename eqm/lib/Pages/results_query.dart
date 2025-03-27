@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
-import 'results_query.dart';
 
-class Query extends StatelessWidget 
+class ResultsQuery extends StatelessWidget 
 {
-  const Query({super.key});
+  const ResultsQuery({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -29,7 +28,7 @@ class Query extends StatelessWidget
                 alignment: Alignment.center,
                 child: const Text
                 (
-                  'Query',
+                  'Results',
                   style: TextStyle
                   (
                     fontSize: 16,
@@ -48,11 +47,9 @@ class Query extends StatelessWidget
             child: TextField
             (
               textAlignVertical: TextAlignVertical(y: -1),
-              autocorrect: true,
-              maxLength: 500,
               decoration: InputDecoration
               (
-                labelText: 'Ethical Question',
+                labelText: 'Result Response',
                 constraints: BoxConstraints
                 (
                   maxWidth: 450,
@@ -91,98 +88,10 @@ class Query extends StatelessWidget
                       borderRadius: BorderRadius.zero,
                     ),
                   ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
+                  onPressed: () {},
                   child: const Text
                   (
-                    'For',
-                    style: TextStyle
-                    (
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-              Container
-              (
-                width: 100,
-                decoration: BoxDecoration
-                (
-                  color: Colors.green
-                ),
-                child: TextButton
-                (
-                  style: TextButton.styleFrom
-                  (
-                    shape: RoundedRectangleBorder
-                    (
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
-                  child: const Text
-                  (
-                    'Neutral',
-                    style: TextStyle
-                    (
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-              Container
-              (
-                width: 100,
-                decoration: BoxDecoration
-                (
-                  color: Colors.green
-                ),
-                child: TextButton
-                (
-                  style: TextButton.styleFrom
-                  (
-                    shape: RoundedRectangleBorder
-                    (
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
-                  child: const Text
-                  (
-                    'Against',
+                    'Save',
                     style: TextStyle
                     (
                       color: Colors.black,

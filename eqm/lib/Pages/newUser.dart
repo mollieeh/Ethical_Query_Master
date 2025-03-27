@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/login.dart';
 import 'home.dart';
-import 'forgot.dart';
-import 'newUser.dart';
 
-class Login extends StatelessWidget 
+class NewUser extends StatelessWidget 
 {
-  const Login({super.key});
+  const NewUser({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -36,36 +35,44 @@ class Login extends StatelessWidget
           (
             decoration: InputDecoration
             (
+              labelText: 'Email', 
+              constraints: BoxConstraints
+              (
+                maxWidth: 300,
+                maxHeight: 300,
+              ), 
+              helper: Text
+              (
+                'Enter a valid email.',
+                style: TextStyle
+                (
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold
+                ),
+              )
+            ),
+          ),
+          TextField
+          (
+            decoration: InputDecoration
+            (
               labelText: 'Username', 
               constraints: BoxConstraints
               (
                 maxWidth: 300,
-                maxHeight: 100,
-              ),
-              helper: TextButton
+                maxHeight: 300,
+              ), 
+              helper: Text
               (
-                onPressed: () 
-                {
-                  Navigator.push
-                  (
-                    context, 
-                    MaterialPageRoute
-                    (
-                      builder: (context) => Forgot()
-                    )
-                  );
-                },  
-                child: const Text
+                'Username should include:\n-Uppercase Letters\n-Lowercase Letters\n-Numbers',
+                style: TextStyle
                 (
-                  'Forgot Username?',
-                  style: TextStyle
-                  (
-                    color: Colors.blue,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold
-                  ),
-                )
-              ),
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold
+                ),
+              )
             ),
           ),
           TextField
@@ -76,31 +83,17 @@ class Login extends StatelessWidget
               constraints: BoxConstraints
               (
                 maxWidth: 300,
-                maxHeight: 100,
+                maxHeight: 300,
               ),
-              helper: TextButton
+              helper: Text
               (
-                onPressed: () 
-                {
-                  Navigator.push
-                  (
-                    context, 
-                    MaterialPageRoute
-                    (
-                      builder: (context) => Forgot()
-                    )
-                  );
-                }, 
-                child: const Text
+                'Password should include:\n-Uppercase Letters\n-Lowercase Letters\n-Numbers\n-Special Characters (@,#,!)\n-Longer than 8 characters\n-Do not use personal info',
+                style: TextStyle
                 (
-                  'Forgot Password?',
-                  style: TextStyle
-                  (
-                    color: Colors.blue,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold
-                  ),
-                )
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
@@ -141,6 +134,7 @@ class Login extends StatelessWidget
                     'Log In',
                     style: TextStyle
                     (
+                      
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.bold
@@ -170,19 +164,20 @@ class Login extends StatelessWidget
                       context, 
                       MaterialPageRoute
                       (
-                        builder: (context) => NewUser()
+                        builder: (context) => Login()
                       )
                     );
                   },
                   child: const Text
                   (
-                    'New User',
+                    'Back',
                     style: TextStyle
                     (
+                      
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.bold
-                    ),
+                    )
                   ),
                 ),
               ),

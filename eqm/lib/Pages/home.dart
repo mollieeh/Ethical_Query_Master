@@ -10,7 +10,8 @@ class HomePage extends StatelessWidget
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Scaffold
     (
       appBar: appBar(context),
@@ -82,7 +83,8 @@ class HomePage extends StatelessWidget
               ),
             ),
           ),
-          Tooltip(
+          Tooltip
+          (
             message: 'History lets you see your question and response history.',
             child: Container
             (
@@ -134,7 +136,8 @@ class HomePage extends StatelessWidget
               ),
             ),
           ),
-          Tooltip(
+          Tooltip
+          (
             message: 'Learn about the creators of the app!',
             child: Container
             (
@@ -186,7 +189,8 @@ class HomePage extends StatelessWidget
               )
             ),
           ),
-          Tooltip(
+          Tooltip
+          (
             message: 'Admin lets administrators check user accounts.',
             child: Container
             (
@@ -238,7 +242,8 @@ class HomePage extends StatelessWidget
               ),
             ),
           ),
-          Tooltip(
+          Tooltip
+          (
             message: 'Profile lets you check your username, email, password, and system settings.',
             child: Container
             (
