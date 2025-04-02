@@ -11,6 +11,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+.env
 
 # IntelliJ related
 *.iml
@@ -18,12 +19,6 @@ migrate_working_dir/
 *.iws
 .idea/
 
-<<<<<<< HEAD
-=======
-#OPENAI key
-.env
-
->>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
