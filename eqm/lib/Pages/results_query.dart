@@ -1,94 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'home.dart';
 
-class ResultsQuery extends StatelessWidget {
+class ResultsQuery extends StatefulWidget {
   final String responseText;
-  const ResultsQuery({super.key, required this.responseText});
+  final String question;
+  final String stance;
+
+  const ResultsQuery({
+    super.key,
+    required this.responseText,
+    required this.question,
+    required this.stance,
+  });
+
+  @override
+  State<ResultsQuery> createState() => _ResultsQueryState();
+}
+
+class _ResultsQueryState extends State<ResultsQuery> {
+  @override
+  void initState() {
+    super.initState();
+    saveChat();
+  }
+
+  Future<void> saveChat() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('chats')
+        .add({
+      'question': widget.question,
+      'stance': widget.stance,
+      'response': widget.responseText,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Center(
-              child: ClipPath(
-                clipper: DownTrapezoidClipper(),
-                child: Container(
-                  width: 300,
-                  height: 30,
-                  color: const Color.fromARGB(255, 127, 255, 131),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Results',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Response:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black, width: 3),
-                ),
-                child: SingleChildScrollView(
-                  child: Text(
-                    responseText,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
+              const SizedBox(height: 12),
+              Text(
+                widget.responseText,
+                style: const TextStyle(fontSize: 16),
               ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              width: 100,
-              decoration: const BoxDecoration(color: Colors.green),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
-                onPressed: () {
-                  // Implement save functionality later
-                },
-                child: const Text(
-                  'Save',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-}
-
-class DownTrapezoidClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.moveTo(0, 0);
-    path.lineTo(size.width * 0.15, size.height);
-    path.lineTo(size.width * 0.85, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

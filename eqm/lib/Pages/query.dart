@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'home.dart';
 import 'results_query.dart';
@@ -22,7 +23,7 @@ class _QueryState extends State<Query> {
 
     setState(() => _loading = true);
 
-    final apiKey = 'YOUR_OPENAI_API_KEY'; // 🔐 Replace with your real key or use env
+    final apiKey = dotenv.env['OPENAI_API_KEY']; // 🔐
     final prompt = 'Answer the following ethical question with a $stance stance:\n"$question"';
 
     final response = await http.post(
@@ -32,9 +33,9 @@ class _QueryState extends State<Query> {
         'Authorization': 'Bearer $apiKey',
       },
       body: jsonEncode({
-        'model': 'gpt-3.5-turbo',
+        'model': 'gpt-4o-mini',
         'messages': [
-          {'role': 'system', 'content': 'You are an AI that gives ethical opinions.'},
+          {'role': 'system', 'content': 'You are an AI that gives ethical opinions and responds in 100 words or less.'},
           {'role': 'user', 'content': prompt},
         ],
         'temperature': 0.7,
@@ -49,7 +50,11 @@ class _QueryState extends State<Query> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ResultsQuery(responseText: chatResponse),
+          builder: (context) => ResultsQuery(
+            responseText: chatResponse,
+            question: question,
+            stance: stance,
+          ),
         ),
       );
     } else {
@@ -67,38 +72,41 @@ class _QueryState extends State<Query> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context),
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          const Text('Query', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 10),
-          Center(
-            child: TextField(
-              controller: _questionController,
-              maxLength: 500,
-              expands: true,
-              maxLines: null,
-              textAlignVertical: TextAlignVertical.top,
-              decoration: const InputDecoration(
-                labelText: 'Ethical Question',
-                border: OutlineInputBorder(),
-                constraints: BoxConstraints(maxWidth: 450, maxHeight: 300),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            const Text('Query', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+            Center(
+              child: TextField(
+                controller: _questionController,
+                maxLength: 500,
+                expands: true,
+                maxLines: null,
+                textAlignVertical: TextAlignVertical.top,
+                decoration: const InputDecoration(
+                  labelText: 'Ethical Question',
+                  border: OutlineInputBorder(),
+                  constraints: BoxConstraints(maxWidth: 450, maxHeight: 300),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          if (_loading) const CircularProgressIndicator(),
-          if (!_loading)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: ['For', 'Neutral', 'Against'].map((stance) {
-                return ElevatedButton(
-                  onPressed: () => sendQuery(stance.toLowerCase()),
-                  child: Text(stance),
-                );
-              }).toList(),
-            ),
-        ],
+            const SizedBox(height: 10),
+            if (_loading) const CircularProgressIndicator(),
+            if (!_loading)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: ['For', 'Neutral', 'Against'].map((stance) {
+                  return ElevatedButton(
+                    onPressed: () => sendQuery(stance.toLowerCase()),
+                    child: Text(stance),
+                  );
+                }).toList(),
+              ),
+          ],
+        ),
       ),
     );
   }
