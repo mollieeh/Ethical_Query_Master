@@ -191,11 +191,11 @@ class _AdminState extends State<Admin> {
                       }
                       await _deleteUserAccount(_userDoc!.id);
                     },
-                    child: const Text('Delete User'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                     ),
+                    child: const Text('Delete User'),
                   ),
                 ),
                 const Divider(),
