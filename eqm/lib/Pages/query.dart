@@ -1,206 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'home.dart';
-import 'results_query.dart';
-
-class Query extends StatelessWidget 
-{
-  const Query({super.key});
-
-  @override
-  Widget build(BuildContext context) 
-  {
-    return Scaffold
-    (
-      appBar: appBar(context),
-      body: Column
-      (
-        children:
-        [
-          Center
-          (
-            child: ClipPath
-            (
-              clipper: DownTrapezoidClipper(),
-              child: Container
-              (
-                width: 300,
-                height: 30,
-                color: const Color.fromARGB(255, 127, 255, 131),
-                alignment: Alignment.center,
-                child: const Text
-                (
-                  'Query',
-                  style: TextStyle
-                  (
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  )
-                )
-              )
-            ),
-          ),
-          Padding
-          (
-            padding: EdgeInsets.all(10),
-          ),
-          Center
-          (
-            child: TextField
-            (
-              textAlignVertical: TextAlignVertical(y: -1),
-              autocorrect: true,
-              maxLength: 500,
-              decoration: InputDecoration
-              (
-                labelText: 'Ethical Question',
-                constraints: BoxConstraints
-                (
-                  maxWidth: 450,
-                  maxHeight: 300,
-                ),
-                border: OutlineInputBorder(),
-              ),
-              maxLines: null,
-              minLines: null,
-              expands: true,
-            )
-          ),
-          Padding
-          (
-            padding: EdgeInsets.all(10),
-          ),
-          Row
-          (
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: 
-            [
-              Container
-              (
-                width: 100,
-                decoration: BoxDecoration
-                (
-                  color: Colors.green
-                ),
-                child: TextButton
-                (
-                  style: TextButton.styleFrom
-                  (
-                    shape: RoundedRectangleBorder
-                    (
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
-                  child: const Text
-                  (
-                    'For',
-                    style: TextStyle
-                    (
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-              Container
-              (
-                width: 100,
-                decoration: BoxDecoration
-                (
-                  color: Colors.green
-                ),
-                child: TextButton
-                (
-                  style: TextButton.styleFrom
-                  (
-                    shape: RoundedRectangleBorder
-                    (
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
-                  child: const Text
-                  (
-                    'Neutral',
-                    style: TextStyle
-                    (
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-              Container
-              (
-                width: 100,
-                decoration: BoxDecoration
-                (
-                  color: Colors.green
-                ),
-                child: TextButton
-                (
-                  style: TextButton.styleFrom
-                  (
-                    shape: RoundedRectangleBorder
-                    (
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () 
-                  {
-                    Navigator.push
-                    (
-                      context, 
-                      MaterialPageRoute
-                      (
-                        builder: (context) => ResultsQuery()
-                      )
-                    );
-                  },
-                  child: const Text
-                  (
-                    'Against',
-                    style: TextStyle
-                    (
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
-        ]
-=======
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'home.dart';
 import 'results_query.dart';
 
@@ -271,11 +72,24 @@ class _QueryState extends State<Query> {
     return Scaffold(
       appBar: appBar(context),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
         child: Column(
-          children: [
-            const SizedBox(height: 10),
-            const Text('Query', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            children: [
+              Center(
+                child: ClipPath(
+                  clipper: DownTrapezoidClipper(),
+                  child: Container(
+                    width: 300,
+                    height: 30,
+                    color: const Color.fromARGB(255, 127, 255, 131),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'Query',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
             const SizedBox(height: 10),
             Center(
               child: TextField(
@@ -305,18 +119,14 @@ class _QueryState extends State<Query> {
               ),
           ],
         ),
->>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
       ),
     );
   }
 }
-<<<<<<< HEAD
 
-class DownTrapezoidClipper extends CustomClipper<Path> 
-{
+class DownTrapezoidClipper extends CustomClipper<Path> {
   @override
-  Path getClip(Size size) 
-  {
+  Path getClip(Size size) {
     Border.all
     (
       color: Colors.black,
@@ -334,5 +144,3 @@ class DownTrapezoidClipper extends CustomClipper<Path>
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
-=======
->>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
