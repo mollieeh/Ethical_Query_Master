@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 name: flutter_application_1
 description: "A new Flutter project."
+=======
+name: ethical_query
+description: "An ethical chatbot app"
+>>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -30,15 +35,41 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
+=======
+  flutter_dotenv: ^5.1.0
+
+  #make web requests
+  http: ^0.13.5
+
+  #firebase
+  firebase_core: ^2.10.0
+  cloud_firestore: ^4.8.0
+  firebase_auth: ^4.8.0
+>>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+<<<<<<< HEAD
   flutter_test:
     sdk: flutter
 
+=======
+  flutter_launcher_icons: ^0.13.1
+  flutter_test:
+    sdk: flutter
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/eqm.png"
+    
+  
+
+>>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -66,6 +97,10 @@ flutter:
     - assets/images/agree.png
     - assets/images/disagree.png
     - assets/images/neutral.png
+<<<<<<< HEAD
+=======
+    - assets/.env
+>>>>>>> b313f72212986cb00ce15a107eddd7f95281bec5
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
