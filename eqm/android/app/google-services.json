@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998229623206",
+    "project_id": "ethical-query-master",
+    "storage_bucket": "ethical-query-master.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998229623206:android:59d7dd950d1fbe116a8f67",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoqolwPlPHNwZOpcumA85ePOqHqmKpEuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
