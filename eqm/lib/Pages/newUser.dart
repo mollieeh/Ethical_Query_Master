@@ -25,11 +25,14 @@ class _NewUserState extends State<NewUser> {
       final uid = userCredential.user!.uid;
 
       // Store username in Firestore
-      await FirebaseFirestore.instance.collection('users').doc(uid).set({
-        'username': usernameController.text.trim(),
-        'email': emailController.text.trim(),
-        'createdAt': Timestamp.now(),
-      });
+      await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userCredential.user!.uid)
+        .set({
+          'username': usernameController.text.trim(),
+          'email': emailController.text.trim(),
+          'isAdmin': false, // 👈 Add this line
+       });
 
       await userCredential.user!.sendEmailVerification();
 

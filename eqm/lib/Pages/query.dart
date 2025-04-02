@@ -35,7 +35,7 @@ class _QueryState extends State<Query> {
       body: jsonEncode({
         'model': 'gpt-4o-mini',
         'messages': [
-          {'role': 'system', 'content': 'You are an AI that gives ethical opinions and responds in 100 words or less.'},
+          {'role': 'system', 'content': 'You are an AI that gives ethical opinions and responds in 300 characters or less.'},
           {'role': 'user', 'content': prompt},
         ],
         'temperature': 0.7,
