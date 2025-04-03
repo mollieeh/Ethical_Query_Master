@@ -29,6 +29,7 @@ class _NewUserState extends State<NewUser> {
         .collection('users')
         .doc(userCredential.user!.uid)
         .set({
+          'createdAt': Timestamp.now(),
           'username': usernameController.text.trim(),
           'email': emailController.text.trim(),
           'isAdmin': false, // 👈 Add this line
