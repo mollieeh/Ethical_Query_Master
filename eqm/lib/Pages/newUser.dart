@@ -25,11 +25,14 @@ class _NewUserState extends State<NewUser> {
       final uid = userCredential.user!.uid;
 
       // Store username in Firestore
-      await FirebaseFirestore.instance.collection('users').doc(uid).set({
-        'username': usernameController.text.trim(),
-        'email': emailController.text.trim(),
-        'createdAt': Timestamp.now(),
-      });
+      await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userCredential.user!.uid)
+        .set({
+          'username': usernameController.text.trim(),
+          'email': emailController.text.trim(),
+          'isAdmin': false, // 👈 Add this line
+       });
 
       await userCredential.user!.sendEmailVerification();
 
@@ -70,96 +73,39 @@ class _NewUserState extends State<NewUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register'), automaticallyImplyLeading: false,),
+      appBar: AppBar(title: const Text('Register')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextField(
-                  controller: usernameController,
-                  decoration: const InputDecoration
-                  (
-                    labelText: 'Username', 
-                    constraints: BoxConstraints
-                    (
-                      maxWidth: 500,
-                      maxHeight: 300,
-                    ), 
-                    helper: Text
-                    (
-                      'Username should include:\n-Uppercase Letters\n-Lowercase Letters\n-Numbers',
-                      style: TextStyle
-                      (
-                        color: Colors.black,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold
-                      ),
-                    )
-                  ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextField(
+                controller: usernameController,
+                decoration: const InputDecoration(labelText: 'Username'),
+              ),
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+              ),
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(labelText: 'Password'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: registerUser,
+                child: const Text("Register"),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
                 ),
-                TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration
-                  (
-                    labelText: 'Email', 
-                    constraints: BoxConstraints
-                    (
-                      maxWidth: 500,
-                      maxHeight: 300,
-                    ), 
-                    helper: Text
-                    (
-                      'Enter a valid email.',
-                      style: TextStyle
-                      (
-                        color: Colors.black,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold
-                      ),
-                    )
-                  ),
-                ),
-                TextField(
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration
-                  (
-                    labelText: 'Password', 
-                    constraints: BoxConstraints
-                    (
-                      maxWidth: 500,
-                      maxHeight: 300,
-                    ),
-                    helper: Text
-                    (
-                      'Password should include:\n-Uppercase Letters\n-Lowercase Letters\n-Numbers\n-Special Characters (@,#,!)\n-Longer than 8 characters\n-Do not use personal info',
-                      style: TextStyle
-                      (
-                        color: Colors.black,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: registerUser,
-                  child: const Text("Register"),
-                ),
-                SizedBox(height: 20,),
-                TextButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login()),
-                  ),
-                  child: const Text("Back to Login"),
-                ),
-              ],
-            ),
+                child: const Text("Back to Login"),
+              ),
+            ],
           ),
         ),
       ),
