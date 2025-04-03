@@ -3,9 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'home.dart';
 
-  // I don't know if this is needed?
-  // Admin({super.key});'home.dart';
-
 class Admin extends StatefulWidget {
   const Admin({super.key});
 
@@ -118,16 +115,39 @@ class _AdminState extends State<Admin> {
   @override
   Widget build(BuildContext context) {
     if (_accessDenied) {
-      return const Scaffold(
-        body: Center(child: Text('Access Denied')),
-      );
-    }
+  // Show a dialog once and immediately redirect after dismissing
+  Future.microtask(() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Access Denied'),
+        content: const Text('You do not have permission to view this page.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // close dialog
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+            child: const Text('Return to Home'),
+          ),
+        ],
+      ),
+    );
+  });
+
+  // Return something simple while dialog is shown
+  return const Scaffold(
+    body: Center(child: SizedBox()),
+  );
+}
 
     return Scaffold(
       appBar: appBar(context),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               Center(
